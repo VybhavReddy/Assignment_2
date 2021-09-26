@@ -18,19 +18,19 @@ namespace ChordFileGenerator
         public string SongName { get; set; }
         public string Artist { get; set; }
         public FileType FileType { get; set; }
-        private List<string> lines;
+        
         FileType filetype;
 
 
-        public void getdata(object b,params string[] s)
+        public void getdata()
         {
-
-            SongName = s[0];
-            Artist = s[1];
+            List<string> lines = new List<string>();
+            //SongName = s.ToString();
+            //Artist = s.ToString();
             for (; ; )
             {
                 Console.WriteLine("Enter the input type\n'0' if you are entering chord\n'1' if you are entering a tab\n'2' if you are entering the lyrics\nEnter any other number to end");
-                int ch = Console.Read();
+                int ch = Convert.ToInt32(Console.ReadLine());
 
                 if (ch == 0)
                     FileType = FileType.Chords;
@@ -78,6 +78,8 @@ namespace ChordFileGenerator
             {
                 sw.WriteLine(str);
             }
+            sw.Close();
+            fs.Close();
         }
         
     }
